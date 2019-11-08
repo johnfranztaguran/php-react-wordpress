@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
       'js/admin': path.resolve(__dirname, 'app/admin.js'),
       'js/shortcode': path.resolve(__dirname, 'app/shortcode.js'),
       'js/widget': path.resolve(__dirname, 'app/widget.js'),
+      'js/SCSignup': path.resolve(__dirname, 'app/SCSignup.js'),
     },
 
     output: {
@@ -27,6 +28,10 @@ module.exports = (env, argv) => {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
+        },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
         },
       ],
     },

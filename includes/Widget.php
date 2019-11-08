@@ -31,7 +31,7 @@ class Widget extends \WP_Widget {
 			'description' => esc_html__( 'WP Reactivate contact form widget.', $this->plugin_slug ),
 		);
 
-		parent::__construct( 'wpr-widget', esc_html__( 'WPR Contact Form', $this->plugin_slug ), $widget_ops );
+		parent::__construct( 'wpr-widget', esc_html__( 'WPR Aution UI', $this->plugin_slug ), $widget_ops );
 	}
 
 	/**

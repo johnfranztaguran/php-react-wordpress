@@ -5,7 +5,7 @@ if (! window._babelPolyfill) {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Shortcode } from './containers/Shortcode.jsx';
+import { SCSignUp } from './containers/Shortcode.jsx';
 
 document.addEventListener('DOMContentLoaded', function() {
   const shortcode_containers = document.querySelectorAll('.wp-reactivate-shortcode');
@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
   for (let i = 0; i < shortcode_containers.length; ++i) {
     const objectId = shortcode_containers[i].getAttribute('data-object-id');
 
-    ReactDOM.render(<Shortcode wpObject={window[objectId]} />, shortcode_containers[i]);
+    ReactDOM.render(<SCSignUp wpObject={window[objectId]} />, shortcode_containers[i]);
   }
 });

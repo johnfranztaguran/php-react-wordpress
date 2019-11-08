@@ -13,9 +13,9 @@
 namespace Pangolin\WPR;
 
 /**
- * @subpackage Plugin
+ * @subpackage SCSignupPlugin
  */
-class Plugin {
+class SCSignupPlugin {
 
 	/**
 	 * The variable name is used as the text domain when internationalizing strings
@@ -26,8 +26,7 @@ class Plugin {
 	 *
 	 * @var      string
 	 */
-	protected $plugin_slug = 'wpr-login-form';
-	// protected $plugin_slug = 'wpr-signup-form';
+	protected $plugin_slug = 'wpr-signup-form';
 
 	/**
 	 * Instance of this class.

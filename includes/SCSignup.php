@@ -13,9 +13,9 @@
 namespace Pangolin\WPR;
 
 /**
- * @subpackage Shortcode
+ * @subpackage SCSignup
  */
-class Shortcode {
+class SCSignup {
 
 	/**
 	 * Instance of this class.
@@ -51,11 +51,11 @@ class Shortcode {
 	 * @since     1.0.0
 	 */
 	private function __construct() {
-		$plugin = Plugin::get_instance();
+		$plugin = SCSignupPlugin::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
 		$this->version = $plugin->get_plugin_version();
 
-		add_shortcode( 'wpr-login-form', array( $this, 'shortcode' ) );
+		add_shortcode( 'wpr-signup-form', array( $this, 'scsignup' ) );
 	}
 
 
@@ -74,11 +74,10 @@ class Shortcode {
 	 * @since     1.0.0
 	 */
 	public function register_frontend_scripts() {
-		wp_register_script( $this->plugin_slug . '-shortcode-script', plugins_url( 'assets/js/shortcode.js', dirname( __FILE__ ) ), array( 'jquery' ), $this->version );
-		wp_register_style( $this->plugin_slug . '-shortcode-style', plugins_url( 'assets/css/shortcode.css', dirname( __FILE__ ) ), $this->version );
+		wp_register_script( $this->plugin_slug . '-shortcode-script', plugins_url( 'assets/js/SCSignup.js', dirname( __FILE__ ) ), array( 'jquery' ), $this->version );
 	}
 
-	public function shortcode( $atts ) {
+	public function scsignup( $atts ) {
 		wp_enqueue_script( $this->plugin_slug . '-shortcode-script' );
 		wp_enqueue_style( $this->plugin_slug . '-shortcode-style' );
 
@@ -92,7 +91,7 @@ class Shortcode {
 
 		wp_localize_script( $this->plugin_slug . '-shortcode-script', $object_name, $object );
 
-		$shortcode = '<div class="wp-reactivate-shortcode" data-object-id="' . $object_name . '"></div>';
-		return $shortcode;
+		$scsignup = '<div class="wp-reactivate-shortcode" data-object-id="' . $object_name . '"></div>';
+		return $scsignup;
 	}
 }

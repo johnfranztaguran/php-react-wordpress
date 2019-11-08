@@ -7,5 +7,9 @@
       }
     }]
   ],
-  "plugins": ["@babel/proposal-class-properties"]
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "babel-plugin-styled-components",
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+  ]
 }

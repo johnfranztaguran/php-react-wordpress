@@ -10,7 +10,7 @@
  * @copyright 2017 Pangolin (Pty) Ltd
  *
  * @wordpress-plugin
- * Plugin Name:       WPR Contact Form
+ * Plugin Name:       WPR Auction UI
  * Plugin URI:        https://gopangolin.com
  * Description:       React boilerplate for WordPress plugins
  * Version:           1.0.2
@@ -77,7 +77,8 @@ spl_autoload_register(function ($class) {
  */
 function init() {
 	$wpr = Plugin::get_instance();
-	$wpr_shortcode = Shortcode::get_instance();
+    $wpr_shortcode = Shortcode::get_instance();
+    $wpr_scsignup = SCSignup::get_instance();
 	$wpr_admin = Admin::get_instance();
     $wpr_rest_admin = Endpoint\Admin::get_instance();
     $wpr_rest_submission = Endpoint\Submission::get_instance(); // connect our new endpoint
