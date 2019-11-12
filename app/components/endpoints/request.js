@@ -1,32 +1,27 @@
-import Cookies from 'universal-cookie';
-import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
-const cookies = new Cookies();
+const BaseUrl = 'http://localhost:8080/buysellrace/wp-json';
 
-class Auth {
-  get token() {
-    const jwt = cookies.get('ortoken', { path: '/' });
-    if (jwt && jwtDecode(jwt).exp > (Date.now() / 1000)) {
-      return jwt;
-    }
+class WPRequest {
 
-    jwt && cookies.remove('ortoken', { path: '/' });
-    return undefined;
-  };
-
-  get currentUser  () {
-    const jwt = cookies.get('ortoken', { path: '/' });
-    if (jwt) {
-      const { exp, iat, ...user } = jwtDecode(jwt);
-      if (exp > (Date.now() / 1000)) {
-        return user;
+  userRegistration = async (username, email, password) => {
+    try {
+      await axios.post(`${BaseUrl}wp/v2/users/register`, {
+        username,
+        email,
+        password
+      },
+      {
+        headers: {
+          'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MFwvYnV5c2VsbHJhY2UiLCJpYXQiOjE1NzM0NjAwNTIsIm5iZiI6MTU3MzQ2MDA1MiwiZXhwIjoxNTc0MDY0ODUyLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxMTEifX19.9kB_xXi-zjLGRHKYC4wP7n1njLLBB_mKcpwIWd3lGDo`
+        }
       }
-      cookies.remove('ortoken', { path: '/' });
-      return undefined;
+      );
+    } catch (err) {
+      console.error('Error: ', err)
     }
-    return undefined;
-  };
+  }
+
 }
 
-export default Auth;
+export default WPRequest;
